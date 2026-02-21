@@ -630,6 +630,13 @@ a:hover {
   .split-layout {
     grid-template-columns: 1fr 1fr;
     gap: 64px;
+    align-items: start;
+  }
+
+  .split-layout .artwork-wrapper {
+    position: sticky;
+    top: 120px;
+    /* Accounts for the sticky header */
   }
 
   .split-layout.reverse .artwork-wrapper {
