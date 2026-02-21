@@ -1,0 +1,167 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  headerImage?: string;
+  isHomePage?: boolean;
+  currentPath?: string;
+}
+
+const {
+  title,
+  description = "Psychotherapy in South West London — Capucine Korenberg",
+  headerImage = "/images/header-banner.jpg",
+  isHomePage = false,
+  currentPath = Astro.url.pathname,
+} = Astro.props;
+
+const navLinks = [
+  { href: "#home", label: "Home" },
+  { href: "#services", label: "Therapy sessions" },
+  { href: "#about", label: "About me" },
+  { href: "#contact", label: "Contact me" },
+  { href: "#additional-information", label: "Additional information" },
+  { href: "#autism-adhd-support", label: "Autism & ADHD support" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Psychotherapy in South West London</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={`${title} | Psychotherapy in South West London`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL('/images/Hiroshige-Ferry-Boats-Crossing-the-Fuji-River.jpg', Astro.url)} />
+    <meta property="og:url" content={Astro.url} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta name="keywords" content="psychotherapy, london, tooting, wimbledon, neurodivergent therapy, autism counselling, adhd support, capucine korenberg" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Capucine Korenberg - Psychotherapy in South West London",
+      "image": new URL('/images/logo.png', Astro.url).toString(),
+      "description": description,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressRegion": "South West London",
+        "addressCountry": "UK"
+      },
+      "url": Astro.url.toString()
+    })} />
+    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class={`header-banner ${isHomePage ? 'header-banner--hero' : ''}`} id="home">
+        <img src={headerImage} alt="Japanese woodblock print" loading="eager" />
+        <div class="header-overlay">
+          <a href="#home" class="site-title">Psychotherapy in South West London</a>
+        </div>
+      </div>
+
+      <nav class="site-nav">
+        <div class="nav-inner">
+          <a href="#home" class="nav-logo">
+            <img src="/images/logo.png" alt="Logo" width="36" height="36" />
+            <span>Capucine Korenberg</span>
+          </a>
+
+          <button class="nav-toggle" aria-label="Toggle navigation" id="nav-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          <ul class="nav-links" id="nav-links">
+            {navLinks.map((link) => (
+              <li>
+                <a href={link.href}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <p>All the photographs of Japanese prints on this website are in the public domain (CC0).</p>
+      <p>&copy; {new Date().getFullYear()} Capucine Korenberg. All rights reserved.</p>
+    </footer>
+
+    <script is:inline>
+      // Navigation Toggle
+      document.getElementById('nav-toggle')?.addEventListener('click', () => {
+        document.getElementById('nav-links')?.classList.toggle('open');
+      });
+
+      // Header Scroll Effect & Active Link Highlight
+      const header = document.querySelector('.site-nav');
+      const sections = document.querySelectorAll('section, .header-banner');
+      const navLinks = document.querySelectorAll('.nav-links a');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (window.scrollY >= (sectionTop - 150)) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (current && link.getAttribute('href').includes(current)) {
+            link.classList.add('active');
+          }
+        });
+      });
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.12
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with animation classes
+      setTimeout(() => {
+        document.querySelectorAll('.fade-up, .fade-in').forEach(element => {
+          observer.observe(element);
+        });
+      }, 100);
+    </script>
+
+    <style is:global>
+      @import '../styles/global.css';
+    </style>
+  </body>
+</html>

@@ -1,0 +1,597 @@
+/* =========================================
+   CSS Custom Properties
+   ========================================= */
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-light: #2C5282;
+  --brand-accent: #C59D5F;
+  --text-dark: #1A202C;
+  --text-body: #4A5568;
+  --text-muted: #718096;
+  --bg-white: #ffffff;
+  --bg-light: #F7FAFC;
+  --bg-card: #FFFFFF;
+  --link-blue: #2B6CB0;
+  --shadow-sm: 0 2px 4px rgba(26, 54, 93, 0.05);
+  --shadow-md: 0 10px 25px rgba(26, 54, 93, 0.08);
+  --shadow-lg: 0 20px 40px rgba(26, 54, 93, 0.12);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --max-width: 960px;
+}
+
+h1,
+h2,
+h3,
+h4,
+.site-title,
+.nav-logo span {
+  font-family: 'Playfair Display', serif;
+  color: var(--text-dark);
+}
+
+/* =========================================
+   Global Reset & Base
+   ========================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-body);
+  background-color: var(--bg-white);
+  overflow-x: hidden;
+}
+
+section {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+a {
+  color: var(--link-blue);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   Header
+   ========================================= */
+.site-header {
+  position: relative;
+  z-index: 100;
+}
+
+.header-banner {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background-color: var(--brand-blue);
+}
+
+.header-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.85;
+}
+
+.header-banner--hero {
+  height: 500px;
+}
+
+.header-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 40px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, transparent 100%);
+}
+
+.site-title {
+  display: inline-block;
+  background-color: var(--brand-blue);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 16px 28px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.site-title:hover {
+  opacity: 0.9;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* =========================================
+   Navigation
+   ========================================= */
+.site-nav {
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: background-color var(--transition), border-color var(--transition), padding var(--transition), box-shadow var(--transition);
+  padding: 12px 0;
+}
+
+.site-nav.scrolled {
+  background-color: var(--bg-white);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
+  padding: 6px 0;
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 10px 0;
+}
+
+.nav-logo img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.nav-logo span {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text-dark);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  display: block;
+  padding: 16px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-body);
+  text-decoration: none;
+  transition: color var(--transition), background-color var(--transition);
+  white-space: nowrap;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--brand-blue);
+  background-color: var(--bg-light);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--brand-blue);
+}
+
+.nav-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* =========================================
+   Main Content
+   ========================================= */
+.page-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--brand-blue);
+  margin-bottom: 32px;
+  line-height: 1.2;
+}
+
+.page-content p {
+  margin-bottom: 1.2em;
+  font-size: 18px;
+}
+
+/* =========================================
+   Info Blocks (Additional Info, ADHD)
+   ========================================= */
+.info-block {
+  max-width: 100%;
+  margin-bottom: 36px;
+}
+
+.info-block h2 {
+  color: var(--brand-blue);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.info-block p {
+  font-size: 1.05rem;
+  margin-bottom: 1em;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+.info-block p:last-child {
+  margin-bottom: 0;
+}
+
+.info-block a {
+  color: var(--link-blue);
+}
+
+.info-block a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   Card Sections (Therapy Sessions)
+   ========================================= */
+.card {
+  background-color: var(--bg-card);
+  padding: 40px;
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(26, 54, 93, 0.03);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brand-blue);
+  margin-bottom: 16px;
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--brand-blue);
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+
+.card h3:first-of-type {
+  margin-top: 4px;
+}
+
+.card p {
+  margin-bottom: 0.8em;
+}
+
+.card ul {
+  list-style: disc;
+  padding-left: 24px;
+  margin-bottom: 1em;
+}
+
+.card li {
+  margin-bottom: 6px;
+}
+
+/* =========================================
+   CTA Button
+   ========================================= */
+.cta-wrapper {
+  text-align: center;
+  margin: 48px 0;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--brand-blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 14px 40px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+
+.cta-button:hover {
+  background-color: var(--brand-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  color: #fff;
+}
+
+/* =========================================
+   Contact Form
+   ========================================= */
+.contact-form {
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--text-body);
+  background: var(--bg-white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 3px rgba(0, 49, 83, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-submit {
+  background-color: var(--link-blue);
+  color: #fff;
+  border: none;
+  padding: 12px 32px;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+.form-submit:hover {
+  opacity: 0.9;
+}
+
+/* =========================================
+   Headshot Image (Home)
+   ========================================= */
+.headshot-wrapper {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.headshot-wrapper img {
+  width: 220px;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: 0 auto;
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+.site-footer {
+  background-color: var(--bg-light);
+  border-top: 1px solid #e2e8f0;
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.site-footer p {
+  margin-bottom: 4px;
+}
+
+/* =========================================
+   Separator
+   ========================================= */
+.separator {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 24px 0;
+}
+
+/* =========================================
+   Spacer
+   ========================================= */
+.spacer {
+  height: 32px;
+}
+
+.spacer--sm {
+  height: 20px;
+}
+
+.spacer--lg {
+  height: 48px;
+}
+
+/* =========================================
+   Mobile Responsive
+   ========================================= */
+@media (max-width: 768px) {
+  .header-banner {
+    height: 200px;
+  }
+
+  .header-banner--hero {
+    height: 350px;
+  }
+
+  .header-overlay {
+    padding: 20px;
+  }
+
+  .site-title {
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-white);
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+
+  .nav-inner {
+    position: relative;
+  }
+
+  .page-content {
+    padding: 32px 20px 60px;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .card {
+    padding: 24px;
+  }
+
+  .headshot-wrapper img {
+    width: 180px;
+  }
+
+  .nav-logo span {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .page-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* =========================================
+   Animations
+   ========================================= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+.fade-up.visible,
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add delays for grid items */
+.delay-100 {
+  transition-delay: 100ms;
+}
+
+.delay-200 {
+  transition-delay: 200ms;
+}
+
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+.delay-400 {
+  transition-delay: 400ms;
+}
