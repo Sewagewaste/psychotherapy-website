@@ -199,18 +199,37 @@ a:hover {
 .nav-links a {
   display: block;
   padding: 16px 14px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  color: var(--text-body);
+  color: var(--text-dark);
   text-decoration: none;
-  transition: color var(--transition), background-color var(--transition);
+  position: relative;
+  transition: color var(--transition);
   white-space: nowrap;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background-color: var(--brand-blue);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+  transform-origin: right;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--brand-blue);
-  background-color: var(--bg-light);
 }
 
 .nav-toggle {
@@ -554,6 +573,73 @@ a:hover {
 @media (min-width: 769px) {
   .page-title {
     font-size: 2.25rem;
+  }
+}
+
+/* =========================================
+   Artwork & Parallax
+   ========================================= */
+.parallax-banner {
+  width: 100vw;
+  height: 400px;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.split-layout.reverse {
+  direction: ltr;
+  /* Handled in flex on mobile, grid on desktop */
+}
+
+.artwork-wrapper {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition);
+}
+
+.artwork-wrapper:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.artwork-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .split-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  .split-layout.reverse .artwork-wrapper {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .split-layout.reverse .split-content {
+    grid-column: 1;
+    grid-row: 1;
   }
 }
 
