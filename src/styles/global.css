@@ -23,6 +23,40 @@
   --max-width: 960px;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-dark: #E2E8F0;
+    --text-body: #A0AEC0;
+    --text-muted: #718096;
+    --bg-white: #1A202C;
+    /* Deep gray for main background */
+    --bg-light: #2D3748;
+    /* Slightly lighter gray for sections */
+    --bg-card: #2D3748;
+    /* Card background match */
+    --link-blue: #63B3ED;
+    /* Lighter blue for visibility */
+    --brand-blue: #90CDF4;
+    /* Lighter brand blue for headers */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Fix hardcoded heading colors in cards */
+  .card h2,
+  .card h3 {
+    color: var(--brand-blue);
+  }
+
+  /* Fix form input borders in dark mode */
+  .form-group input,
+  .form-group textarea {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-dark);
+  }
+}
+
 h1,
 h2,
 h3,
