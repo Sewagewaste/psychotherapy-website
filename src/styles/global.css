@@ -61,9 +61,10 @@ html.dark .site-footer {
 }
 
 /* =========================================
-   Dark Mode Toggle Button (Japanese style)
+   Dark Mode & Language Toggle Buttons
    ========================================= */
-.theme-toggle {
+.theme-toggle,
+.lang-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,22 +87,33 @@ html.dark .site-footer {
   position: relative;
   flex-shrink: 0;
   margin-left: 8px;
+  text-decoration: none;
 }
 
-.theme-toggle:hover {
+.lang-toggle {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover {
   background: rgba(0, 0, 0, 0.3);
   transform: scale(1.08);
+  color: #ffffff;
 }
 
-.site-nav.scrolled .theme-toggle {
+.site-nav.scrolled .theme-toggle,
+.site-nav.scrolled .lang-toggle {
   border-color: var(--brand-blue);
   background: transparent;
   color: var(--brand-blue);
   text-shadow: none;
 }
 
-.site-nav.scrolled .theme-toggle:hover {
+.site-nav.scrolled .theme-toggle:hover,
+.site-nav.scrolled .lang-toggle:hover {
   background: var(--bg-light);
+  color: var(--brand-blue);
 }
 
 .theme-toggle .icon-sun,
@@ -110,24 +122,26 @@ html.dark .site-footer {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+/* Light Mode: Show moon to indicate switching TO dark mode */
 .theme-toggle .icon-sun {
-  opacity: 1;
-  transform: rotate(0deg);
-}
-
-.theme-toggle .icon-moon {
-  opacity: 0;
-  transform: rotate(-90deg);
-}
-
-html.dark .theme-toggle .icon-sun {
   opacity: 0;
   transform: rotate(90deg);
 }
 
-html.dark .theme-toggle .icon-moon {
+.theme-toggle .icon-moon {
   opacity: 1;
   transform: rotate(0deg);
+}
+
+/* Dark Mode: Show sun to indicate switching TO light mode */
+html.dark .theme-toggle .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+html.dark .theme-toggle .icon-moon {
+  opacity: 0;
+  transform: rotate(-90deg);
 }
 
 

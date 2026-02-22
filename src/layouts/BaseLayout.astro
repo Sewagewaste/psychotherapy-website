@@ -5,6 +5,7 @@ interface Props {
   headerImage?: string;
   isHomePage?: boolean;
   currentPath?: string;
+  lang?: 'en' | 'fr';
 }
 
 const {
@@ -13,20 +14,32 @@ const {
   headerImage = "/images/header-banner.jpg",
   isHomePage = false,
   currentPath = Astro.url.pathname,
+  lang = 'en',
 } = Astro.props;
 
-const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#services", label: "Therapy sessions" },
-  { href: "#autism-adhd-support", label: "Autism & ADHD support" },
-  { href: "#about", label: "About me" },
-  { href: "#contact", label: "Contact me" },
-  { href: "#additional-information", label: "Additional information" },
+const navLinksEn = [
+  { href: `${lang === 'en' ? '' : '/'}#home`, label: "Home" },
+  { href: `${lang === 'en' ? '' : '/'}#services`, label: "Therapy sessions" },
+  { href: `${lang === 'en' ? '' : '/'}#autism-adhd-support`, label: "Autism & ADHD support" },
+  { href: `${lang === 'en' ? '' : '/'}#about`, label: "About me" },
+  { href: `${lang === 'en' ? '' : '/'}#contact`, label: "Contact me" },
+  { href: `${lang === 'en' ? '' : '/'}#additional-information`, label: "Additional information" },
 ];
+
+const navLinksFr = [
+  { href: `${lang === 'fr' ? '' : '/fr'}#home`, label: "Accueil" },
+  { href: `${lang === 'fr' ? '' : '/fr'}#services`, label: "Séances de thérapie" },
+  { href: `${lang === 'fr' ? '' : '/fr'}#autism-adhd-support`, label: "Soutien Autisme & TDAH" },
+  { href: `${lang === 'fr' ? '' : '/fr'}#about`, label: "À propos de moi" },
+  { href: `${lang === 'fr' ? '' : '/fr'}#contact`, label: "Me contacter" },
+  { href: `${lang === 'fr' ? '' : '/fr'}#additional-information`, label: "Informations complémentaires" },
+];
+
+const activeNavLinks = lang === 'fr' ? navLinksFr : navLinksEn;
 ---
 
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang={lang === 'fr' ? 'fr-FR' : 'en-GB'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -90,7 +103,7 @@ const navLinks = [
           </button>
 
           <ul class="nav-links" id="nav-links">
-            {navLinks.map((link) => (
+            {activeNavLinks.map((link) => (
               <li>
                 <a href={link.href}>
                   {link.label}
@@ -99,10 +112,25 @@ const navLinks = [
             ))}
           </ul>
 
-          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-            <span class="icon-sun">☀</span>
-            <span class="icon-moon">☾</span>
-          </button>
+          <div class="nav-actions" style="display: flex; align-items: center;">
+            <a href={lang === 'fr' ? '/' : '/fr'} class="lang-toggle" aria-label="Toggle language" title={lang === 'fr' ? 'Switch to English' : 'Switch to French'}>{lang === 'fr' ? 'EN' : 'FR'}</a>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+              <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+          </div>
         </div>
       </nav>
     </header>

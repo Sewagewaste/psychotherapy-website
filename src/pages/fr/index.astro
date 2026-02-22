@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Bienvenue"
+  description="Trouvez la confiance et le bien-être en vous-même avec moi. Découvrez vos forces, acceptez votre singularité et créez une vie épanouissante."
+  isHomePage={true}
+  headerImage="/images/header-banner.jpg"
+  lang="fr"
+>
+  <div class="page-content">
+
+    <!-- HOME SECTION -->
+    <section id="home-content" class="fade-in">
+      <div class="headshot-wrapper fade-up delay-100">
+        <img
+          src="/images/Headshot-2-small.jpg"
+          alt="Portrait de Capucine Korenberg, thérapeute, conseillère, psychothérapeute basée à Londres, avec un sourire doux."
+        />
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="home-text-container fade-up delay-200" style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <p style="font-size:24px; color: var(--brand-blue); font-family: 'Playfair Display', serif; line-height: 1.4;">
+          <strong>Vous sentez-vous perdu(e), anxieux(se) ou submergé(e) par la pression du quotidien ?</strong>
+        </p>
+
+        <div class="spacer--sm"></div>
+
+        <p style="font-size:18px">
+          Je suis Capucine, psychothérapeute qualifiée basée à Tooting et Wimbledon, à Londres. Mon objectif est de vous aider à trouver la clarté et le soutien dont vous avez besoin pour surmonter les défis de la vie.
+        </p>
+
+        <div class="spacer"></div>
+
+        <p style="font-size:19px">
+          Je pense que tout le monde mérite de se sentir confiant et à l'aise dans sa propre peau. J'ai à cœur d'aider les personnes qui ont l'impression de ne pas "s'intégrer" ou qui s'inquiètent d'être "différentes" à découvrir leurs forces et à créer une vie qui a du sens. J'ai un intérêt particulier pour l'accompagnement des clients neuroatypiques et de leurs familles.
+        </p>
+
+        <div class="cta-wrapper fade-up delay-300">
+          <a href="#contact" class="cta-button">Me contacter</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services">
+      <h1 class="page-title fade-up">Séances de thérapie</h1>
+
+      <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+        <div class="card fade-up delay-100">
+          <h2>Mes domaines d'intervention</h2>
+          <h3>Soutien général</h3>
+          <p>Je propose un accompagnement pour des défis courants tels que :</p>
+          <ul>
+            <li>Anxiété et stress</li>
+            <li>Crises de panique</li>
+            <li>Solitude</li>
+            <li>Faible estime de soi</li>
+            <li>Problèmes relationnels</li>
+          </ul>
+
+          <h3>Soutien aux clients neuroatypiques</h3>
+          <p>
+            J'ai un intérêt particulier pour l'accompagnement des personnes concernées par
+            <a href="#autism-adhd-support">l'autisme et le TDAH</a> ainsi que leurs familles.
+          </p>
+        </div>
+
+        <div class="card fade-up delay-200">
+          <h2>Séances</h2>
+          <p>
+            Je reçois mes clients en face à face le lundi ou le jeudi à Wimbledon (près de la gare) et à Tooting Bec, dans le sud-ouest de Londres. Les séances sont hebdomadaires, à la même heure.
+          </p>
+          <p style="margin-top: 16px;">La thérapie est disponible en anglais ou en français.</p>
+        </div>
+
+        <div class="card fade-up delay-300">
+          <h2>Première séance</h2>
+          <p>
+            Si vous êtes prêt(e) à commencer une thérapie, je vous propose une première séance en ligne à 50% de mon tarif habituel. Cela nous donnera l'occasion de faire connaissance et de parler de ce qui vous amène ici.
+          </p>
+        </div>
+
+        <div class="card fade-up delay-400">
+          <h2>Honoraires &amp; politique d'annulation</h2>
+          <h3>£75 par séance (50 minutes)</h3>
+          <p>
+            Je comprends que les plans puissent changer, mais je vous demande de me prévenir 48 heures à l'avance si vous devez reporter ou annuler une séance. Le tarif complet s'applique en cas d'annulation tardive ou de rendez-vous manqué.
+          </p>
+          <p style="margin-top: 16px;">
+            Si vous rencontrez des difficultés financières pour suivre une thérapie, n'hésitez pas à me contacter pour discuter des options possibles. Je propose un nombre limité de places à tarif réduit.
+          </p>
+        </div>
+      </div>
+
+      <div class="cta-wrapper fade-up delay-200">
+        <a href="#contact" class="cta-button">Me contacter</a>
+      </div>
+    </section>
+
+    <!-- PARALLAX BANNER (Hiroshige) -->
+    <div class="parallax-banner" style="background-image: url('/images/Hiroshige-Ferry-Boats-Crossing-the-Fuji-River-1.jpg');"></div>
+
+    <!-- AUTISM & ADHD SUPPORT SECTION -->
+    <section id="autism-adhd-support">
+      <h1 class="page-title fade-up">Soutien Autisme &amp; TDAH</h1>
+      
+      <div class="split-layout reverse">
+        <div class="split-content fade-up delay-100">
+          <div class="info-block">
+            <h2>Neurodiversité</h2>
+            <p>Les différences telles que les troubles du spectre de l'autisme (TSA) et le trouble du déficit de l'attention avec ou sans hyperactivité (TDA/H) sont des variations naturelles de la neurologie humaine, et non des déficits à corriger ou à guérir.</p>
+            <p>La recherche montre systématiquement que la neurodiversité est bénéfique pour les sociétés humaines. Par exemple, la <a href="https://hbr.org/2017/05/neurodiversity-as-a-competitive-advantage" target="_blank" rel="noopener">Harvard Business Review</a> décrit la neurodiversité comme un « avantage concurrentiel », notant que les personnes autistes possèdent souvent une capacité d'attention ciblée et une aptitude exceptionnelle à la reconnaissance des modèles. Ces traits peuvent les rendre inestimables dans des rôles nécessitant une analyse détaillée ou la résolution de problèmes complexes.</p>
+          </div>
+
+          <div class="info-block">
+            <h2>Le problème de la double empathie</h2>
+            <p>Le <a href="https://www.tandfonline.com/doi/abs/10.1080/09687599.2012.710008" target="_blank" rel="noopener">problème de la double empathie</a> explique que les ruptures de communication se produisent dans les deux sens entre les personnes neurotypiques et neuroatypiques. Il ne s'agit pas pour la personne neuroatypique de manquer fondamentalement d'aptitudes sociales ; ce sont plutôt les difficultés qui découlent d'un décalage dans les styles de communication. Cette déconnexion conduit souvent à une mauvaise compréhension des besoins des personnes atteintes de TDAH ou d'autisme.</p>
+          </div>
+
+          <div class="info-block">
+            <h2>Engagement personnel</h2>
+            <p>Mon intérêt particulier pour ce domaine est profondément personnel et s'appuie sur ma vie auprès de mon mari et de mon fils adulte, tous deux neuroatypiques (AuTDAH ou TSA + TDAH). Cette expérience directe garantit que mon travail thérapeutique est ancré dans une compréhension complète et réaliste des défis complexes auxquels vous faites face.</p>
+          </div>
+        </div>
+
+        <div class="artwork-wrapper fade-up delay-300">
+          <img src="/images/Brooklyn-Fan.jpg" alt="Art d'éventail japonais" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="info-block fade-up delay-400" style="margin-top: 48px;">
+        <h2>Pourquoi la psychothérapie centrée sur la personne ?</h2>
+        <p>La psychothérapie centrée sur la personne (PCP) est une approche fortement recommandée pour les clients neuroatypiques, car elle s'éloigne d'un diagnostic médical pour se concentrer sur votre monde intérieur et votre expérience personnelle. <a href="https://www.liebertpub.com/doi/10.1089/aut.2021.0065" target="_blank" rel="noopener">Les recherches du Dr Romy Hume</a> soulignent l'importance de l'approche PCP pour le travail avec les adultes autistes, notant que l'empathie, l'authenticité et la bienveillance sont essentielles pour construire une relation thérapeutique solide.</p>
+        <p>De plus, des <a href="https://www.tandfonline.com/doi/full/10.1080/17482631.2023.2278858" target="_blank" rel="noopener">études récentes</a> indiquent qu'il est vital que les thérapeutes possèdent des connaissances de base sur la neurodivergence. Les cliniciens qui manquent de cette compréhension sont fréquemment cités par les adultes autistes comme le principal obstacle à l'accès à un soutien utile.</p>
+        <p>Mon travail est centré sur la personne, éclairé par la recherche et authentique. Je m'efforce d'avoir une communication claire et j'évite les « techniques de relation artificielles » pour instaurer la confiance profonde nécessaire à un véritable travail. Mon espoir est de vous aider à contrer la honte et le traumatisme souvent causés par des années passées à vous sentir incompris(e) et à devoir masquer votre véritable personnalité.</p>
+      </div>
+    </section>
+
+    <!-- PARALLAX BANNER (Seba) -->
+    <div class="parallax-banner" style="background-image: url('/images/Seba-from-the-series-1.jpg');"></div>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+      <h1 class="page-title fade-up">À propos de moi</h1>
+      
+      <div class="split-layout">
+        <div class="split-content fade-up delay-100">
+          <p style="font-size:18px">
+            Ma pratique est fondée sur des principes humanistes, et je m'engage à vous aider à découvrir les ressources intérieures que vous possédez déjà pour mener une vie plus épanouissante.
+          </p>
+
+          <div class="spacer"></div>
+
+          <p style="font-size:18px">
+            Mon parcours vers la psychothérapie a suivi un chemin peu conventionnel. Titulaire d'un doctorat en science des matériaux, j'ai passé de nombreuses années dans la recherche académique, où j'ai développé un esprit analytique aiguisé et une approche rigoureuse de la résolution de problèmes.
+          </p>
+
+          <div class="spacer"></div>
+
+          <p style="font-size:18px">
+            Bien que gratifiant, j'ai réalisé il y a quelques années que ma passion la plus profonde résidait dans la connexion humaine. Cela m'a amenée à me reconvertir en psychothérapeute. Je pense que mon parcours unique me permet d'offrir une curiosité intellectuelle et une profondeur émotionnelle dans la salle de thérapie.
+          </p>
+
+          <div class="spacer"></div>
+
+          <p style="font-size:18px">
+            Je possède un diplôme de niveau 6 en psychothérapie centrée sur la personne du prestigieux Metanoia Institute, l'un des principaux prestataires d'enseignement supérieur spécialisé en psychothérapie au Royaume-Uni. J'ai effectué plus de 350 heures auprès de clients dans divers contextes dans le cadre de ma formation.
+          </p>
+        </div>
+
+        <div class="artwork-wrapper fade-up delay-300">
+          <img src="/images/Met-1-scaled.jpg" alt="Art de gravure sur bois japonaise, branches élégantes et oiseaux" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <h1 class="page-title fade-up">Me contacter</h1>
+
+      <div class="split-layout">
+        <div class="split-content">
+          <p class="fade-up delay-100" style="font-size:19px">
+            Si vous vous sentez prêt(e) à franchir la prochaine étape ou si vous souhaitez simplement en savoir plus sur la façon dont je peux vous accompagner, n'hésitez pas à
+            <a href="mailto:therapy@capucinekorenberg.com">m'envoyer un e-mail</a> ou à utiliser le formulaire ci-dessous.
+          </p>
+
+          <hr class="separator fade-up delay-200" />
+
+          <form
+            class="contact-form fade-up delay-300"
+            action="https://formspree.io/f/xpwzjvvl"
+            method="POST"
+          >
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Adresse e-mail</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Envoyer le message</button>
+          </form>
+        </div>
+
+        <div class="artwork-wrapper fade-up delay-400">
+          <img src="/images/MET-JP2581-scaled.jpg" alt="Art de paysage japonais" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="spacer--lg"></div>
+    </section>
+
+    <!-- ADDITIONAL INFORMATION SECTION -->
+    <section id="additional-information">
+      <h1 class="page-title fade-up">Informations complémentaires</h1>
+
+      <div class="info-block fade-up delay-100">
+        <h2>Paiements</h2>
+        <p>Veuillez vous assurer que le paiement est effectué dans les 24 heures suivant chaque séance (virement bancaire ou Paypal).</p>
+        <p>Le tarif initial est garanti pendant au moins 12 mois à compter de notre première séance. Je vous préviendrai un mois à l'avance de toute augmentation de tarif.</p>
+      </div>
+
+      <div class="info-block fade-up delay-200">
+        <h2>Protection des données</h2>
+        <p>Je suis enregistrée auprès de l'Information Commissioner's Office (ICO) et je me conforme au Règlement général sur la protection des données (RGPD) du Royaume-Uni.</p>
+      </div>
+
+      <div class="info-block fade-up delay-300">
+        <h2>Cadre éthique</h2>
+        <p>Je suis membre de la British Association for Counselling and Psychotherapy (BACP) et j'adhère à leur cadre éthique.</p>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
