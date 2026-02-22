@@ -2,6 +2,7 @@
    CSS Custom Properties
    ========================================= */
 :root {
+  color-scheme: light dark;
   --brand-blue: #1A365D;
   --brand-blue-light: #2C5282;
   --brand-accent: #C59D5F;
@@ -68,8 +69,7 @@ h1,
 h2,
 h3,
 h4,
-.site-title,
-.nav-logo span {
+.site-title {
   font-family: 'Playfair Display', serif;
   color: var(--text-dark);
 }
@@ -183,19 +183,19 @@ a:hover {
    Navigation
    ========================================= */
 .site-nav {
-  background-color: transparent;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, transparent 100%);
   border-bottom: 1px solid transparent;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: background-color var(--transition), border-color var(--transition), padding var(--transition), box-shadow var(--transition);
+  transition: background var(--transition), border-color var(--transition), padding var(--transition), box-shadow var(--transition);
   padding: 12px 0;
 }
 
 .site-nav.scrolled {
-  background-color: var(--bg-white);
+  background: var(--bg-white);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: var(--shadow-sm);
   padding: 6px 0;
@@ -225,9 +225,17 @@ a:hover {
 }
 
 .nav-logo span {
+  font-family: 'Playfair Display', serif;
   font-weight: 600;
   font-size: 18px;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 1px 8px rgba(0, 0, 0, 0.6);
+  transition: color var(--transition), text-shadow var(--transition);
+}
+
+.site-nav.scrolled .nav-logo span {
   color: var(--text-dark);
+  text-shadow: none;
 }
 
 .nav-links {
