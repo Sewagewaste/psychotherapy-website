@@ -2,7 +2,6 @@
    CSS Custom Properties
    ========================================= */
 :root {
-  color-scheme: light dark;
   --brand-blue: #1A365D;
   --brand-blue-light: #2C5282;
   --brand-accent: #C59D5F;
@@ -24,46 +23,113 @@
   --max-width: 960px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text-dark: #E2E8F0;
-    --text-body: #A0AEC0;
-    --text-muted: #718096;
-    --bg-white: #1A202C;
-    /* Deep gray for main background */
-    --bg-light: #2D3748;
-    /* Slightly lighter gray for sections */
-    --bg-card: #2D3748;
-    /* Card background match */
-    --link-blue: #63B3ED;
-    /* Lighter blue for visibility */
-    --brand-blue: #90CDF4;
-    /* Lighter brand blue for headers */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.6);
-  }
-
-  /* Fix hardcoded heading colors in cards */
-  .card h2,
-  .card h3 {
-    color: var(--brand-blue);
-  }
-
-  /* Fix form input borders in dark mode */
-  .form-group input,
-  .form-group textarea {
-    border-color: rgba(255, 255, 255, 0.4);
-    color: var(--text-dark);
-    background-color: var(--bg-light);
-  }
-
-  /* Fix Firefox not applying dark mode to body automatically */
-  body {
-    background-color: var(--bg-white);
-    color: var(--text-body);
-  }
+/* =========================================
+   Dark Mode (class-based toggle)
+   ========================================= */
+html.dark {
+  --text-dark: #E2E8F0;
+  --text-body: #A0AEC0;
+  --text-muted: #718096;
+  --bg-white: #1A202C;
+  --bg-light: #2D3748;
+  --bg-card: #2D3748;
+  --link-blue: #63B3ED;
+  --brand-blue: #90CDF4;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
+
+html.dark .card h2,
+html.dark .card h3 {
+  color: var(--brand-blue);
+}
+
+html.dark .form-group input,
+html.dark .form-group textarea {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+}
+
+html.dark .separator {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark .site-footer {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================
+   Dark Mode Toggle Button (Japanese style)
+   ========================================= */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.3);
+  transform: scale(1.08);
+}
+
+.site-nav.scrolled .theme-toggle {
+  border-color: var(--brand-blue);
+  background: transparent;
+  color: var(--brand-blue);
+  text-shadow: none;
+}
+
+.site-nav.scrolled .theme-toggle:hover {
+  background: var(--bg-light);
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.theme-toggle .icon-moon {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+html.dark .theme-toggle .icon-sun {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+html.dark .theme-toggle .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
 
 h1,
 h2,
@@ -202,12 +268,12 @@ a:hover {
 }
 
 .nav-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
 }
 
 .nav-logo {
@@ -242,13 +308,14 @@ a:hover {
   display: flex;
   list-style: none;
   gap: 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  margin-left: auto;
 }
 
 .nav-links a {
   display: block;
-  padding: 16px 14px;
-  font-size: 15px;
+  padding: 16px 10px;
+  font-size: 14px;
   font-weight: 600;
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 1px 8px rgba(0, 0, 0, 0.6);
@@ -270,10 +337,14 @@ a:hover {
   left: 14px;
   right: 14px;
   height: 2px;
-  background-color: var(--brand-blue);
+  background-color: #ffffff;
   transform: scaleX(0);
   transition: transform var(--transition);
   transform-origin: right;
+}
+
+.site-nav.scrolled .nav-links a::after {
+  background-color: var(--brand-blue);
 }
 
 .nav-links a:hover::after,
@@ -284,6 +355,11 @@ a:hover {
 
 .nav-links a:hover,
 .nav-links a.active {
+  color: #ffffff;
+}
+
+.site-nav.scrolled .nav-links a:hover,
+.site-nav.scrolled .nav-links a.active {
   color: var(--brand-blue);
 }
 
@@ -616,6 +692,13 @@ a:hover {
   .nav-links a {
     padding: 14px 24px;
     font-size: 15px;
+    color: var(--text-dark);
+    text-shadow: none;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--brand-blue);
   }
 
   .nav-inner {
