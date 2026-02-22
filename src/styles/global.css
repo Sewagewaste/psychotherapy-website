@@ -60,6 +60,19 @@ html.dark .site-footer {
   border-top-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Fix contrast for buttons & banners in dark mode where backgrounds become light blue */
+html.dark .site-title,
+html.dark .cta-button,
+html.dark .form-submit {
+  color: var(--bg-white);
+}
+
+html.dark .site-title:hover,
+html.dark .cta-button:hover,
+html.dark .form-submit:hover {
+  color: var(--bg-white);
+}
+
 /* =========================================
    Dark Mode & Language Toggle Buttons
    ========================================= */
